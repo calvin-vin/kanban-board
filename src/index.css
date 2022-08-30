@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.percentage {
+  font-family: "Inter", sans-serif;
+}
