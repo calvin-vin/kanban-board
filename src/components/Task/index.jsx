@@ -30,7 +30,11 @@ const Task = ({
     const getTasks = async () => {
       const res = await TaskServices.getTasks(token, groupId);
       const data = await res.json();
-      setTasks(data);
+      setTasks(
+        data.sort(function (a, b) {
+          return new Date(b.updated_at) - new Date(a.updated_at);
+        })
+      );
     };
 
     getTasks();
