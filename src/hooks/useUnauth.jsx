@@ -6,7 +6,7 @@ const useUnauth = (token) => {
 
   useEffect(() => {
     if (!token) {
-      return navigate("/login");
+      return navigate("/v1/login");
     }
   }, [token, navigate]);
 };

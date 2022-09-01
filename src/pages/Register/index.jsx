@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import useAuth from "../../hooks/useAuth";
 import { TokenContext } from "../../App";
@@ -10,6 +10,8 @@ import Loader from "../../components/Loader";
 const Register = ({ setToken }) => {
   const token = useContext(TokenContext);
   useAuth(token);
+
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -29,6 +31,8 @@ const Register = ({ setToken }) => {
       setError(json.message);
     } else {
       setToken(json.auth_token);
+      localStorage.setItem("token", JSON.stringify(json.auth_token));
+      navigate("/");
     }
     setIsLoading((isLoading) => !isLoading);
   };
@@ -57,7 +61,6 @@ const Register = ({ setToken }) => {
           <div className="mb-4">
             <input
               type="text"
-              autoComplete="off"
               className="rounded outline-none py-1 px-2 bg-transparent border-primary-main border-b-2 placeholder:text-white placeholder:opacity-60 text-white w-full"
               placeholder="name"
               onChange={(e) =>
@@ -68,7 +71,6 @@ const Register = ({ setToken }) => {
           <div className="mb-4">
             <input
               type="text"
-              autoComplete="off"
               className="rounded outline-none py-1 px-2 bg-transparent border-primary-main border-b-2 placeholder:text-white placeholder:opacity-60 text-white w-full"
               placeholder="email"
               onChange={(e) =>
@@ -111,7 +113,7 @@ const Register = ({ setToken }) => {
           )}
           <p className="text-white text-xs text-center mt-2">
             Already have an account?{" "}
-            <Link to="/login" className="font-semibold">
+            <Link to="/v1/login" className="font-semibold">
               Login
             </Link>
           </p>

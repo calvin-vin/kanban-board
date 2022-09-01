@@ -25,9 +25,15 @@ const register = async (data) => {
   return res;
 };
 
+const logout = () => {
+  localStorage.removeItem("token");
+  return (window.location.href = "/login");
+};
+
 const AuthServices = {
   login,
   register,
+  logout,
 };
 
 export default AuthServices;

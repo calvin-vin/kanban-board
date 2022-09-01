@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import useAuth from "../../hooks/useAuth";
 import { TokenContext } from "../../App";
@@ -10,6 +10,8 @@ import Loader from "../../components/Loader";
 const Login = ({ setToken }) => {
   const token = useContext(TokenContext);
   useAuth(token);
+
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     email: "",
@@ -27,6 +29,8 @@ const Login = ({ setToken }) => {
       setError(json.message);
     } else {
       setToken(json.auth_token);
+      localStorage.setItem("token", JSON.stringify(json.auth_token));
+      navigate("/");
     }
     setIsLoading((isLoading) => !isLoading);
   };
@@ -53,7 +57,6 @@ const Login = ({ setToken }) => {
           <div className="mb-4">
             <input
               type="text"
-              autoComplete="off"
               className="rounded outline-none py-1 px-2 bg-transparent border-primary-main border-b-2 placeholder:text-white placeholder:opacity-60 text-white w-full"
               placeholder="email"
               onChange={(e) =>
@@ -83,7 +86,7 @@ const Login = ({ setToken }) => {
           )}
           <p className="text-white text-xs text-center mt-2">
             Don't have an account?{" "}
-            <Link to="/register" className="font-semibold">
+            <Link to="/v1/register" className="font-semibold">
               Register
             </Link>
           </p>
