@@ -4,6 +4,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        "dark-main": "#1B2430",
         "primary-main": "#01959F",
         "primary-surface": "#F7FEFF",
         "secondary-main": "#FA9810",
@@ -16,6 +17,7 @@ module.exports = {
         "success-border": "#B8DBCA",
         "success-surface": "#F8FBF9",
         "neutral-10": "#FFFFFF",
+        "neutral-20": "#FAFAFA",
         "neutral-30": "#EDEDED",
         "neutral-40": "#E0E0E0",
         "neutral-70": "#757575",
@@ -25,4 +27,7 @@ module.exports = {
     },
   },
   plugins: [],
+  variants: {
+    fill: ["hover", "focus"], // this line does the trick
+  },
 };
