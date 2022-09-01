@@ -30,10 +30,15 @@ const logout = () => {
   return (window.location.href = "/login");
 };
 
+const getToken = () => {
+  return JSON.parse(localStorage.getItem("token"));
+};
+
 const AuthServices = {
   login,
   register,
   logout,
+  getToken,
 };
 
 export default AuthServices;

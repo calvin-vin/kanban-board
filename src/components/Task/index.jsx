@@ -22,7 +22,7 @@ const Task = () => {
           <ProgressIncomplete />
           <OptionIcon />
           {/* Dropdown */}
-          <div className="dropdown-menu">
+          {/* <div className="dropdown-menu">
             <ul>
               <li className="flex items-center mb-3 group">
                 <MoveRightIcon />
@@ -49,7 +49,7 @@ const Task = () => {
                 </span>
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

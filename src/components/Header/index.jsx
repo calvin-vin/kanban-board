@@ -2,7 +2,7 @@ import AuthServices from "../../services/auth";
 
 const Header = () => {
   return (
-    <div className="shadow w-full h-16 flex items-center justify-between mb-6">
+    <div className="shadow w-full h-16 flex items-center justify-between mb-6 fixed">
       <h1 className="text-lg leading-7 text-neutral-100 font-bold py-[18px] px-5">
         Product Roadmap
       </h1>
