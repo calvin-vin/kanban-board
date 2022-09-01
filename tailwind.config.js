@@ -23,6 +23,7 @@ module.exports = {
         "neutral-70": "#757575",
         "neutral-90": "#404040",
         "neutral-100": "#1D1F20",
+        "modal-background": "rgba(0, 0, 0, 0.3)",
       },
     },
   },

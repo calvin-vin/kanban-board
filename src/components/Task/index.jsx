@@ -14,7 +14,7 @@ import MoveRightIcon from "../../assets/sidebar/MoveRightIcon";
 import EditIcon from "../../assets/sidebar/EditIcon";
 import NoTask from "../NoTask/NoTask";
 
-const Task = ({ groupId }) => {
+const Task = ({ groupId, isSubmitted }) => {
   const [tasks, setTasks] = useState();
 
   useEffect(() => {
@@ -27,7 +27,7 @@ const Task = ({ groupId }) => {
     };
 
     getTasks();
-  }, []);
+  }, [groupId, isSubmitted]);
   return (
     <div className="w-full">
       {tasks && !tasks.length && <NoTask />}

@@ -1,5 +1,4 @@
 const ProgressGoing = ({ percentage }) => {
-  const num = "90";
   return (
     <div className="flex">
       {/* Bar */}
