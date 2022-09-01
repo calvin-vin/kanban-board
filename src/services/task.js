@@ -14,8 +14,21 @@ const getGroupTasks = async (token) => {
   return res;
 };
 
+const getTasks = async (token, groupId) => {
+  const res = await fetch(
+    `https://todos-project-api.herokuapp.com/todos/${groupId}/items`,
+    {
+      method: "GET",
+      headers: headers(token),
+    }
+  );
+
+  return res;
+};
+
 const TaskServices = {
   getGroupTasks,
+  getTasks,
 };
 
 export default TaskServices;

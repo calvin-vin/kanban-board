@@ -7,7 +7,6 @@ import Task from "../Task";
 
 const GroupTask = () => {
   const [groupTask, setGroupTask] = useState();
-  const [task, setTask] = useState();
 
   useEffect(() => {
     const token = AuthServices.getToken();
@@ -22,7 +21,7 @@ const GroupTask = () => {
   }, []);
 
   return (
-    <div className="flex">
+    <div className="flex items-start">
       {groupTask &&
         groupTask.map((tasks, id) => {
           let bg, border, text;
@@ -54,7 +53,7 @@ const GroupTask = () => {
                 {tasks.title}
               </h2>
               <h3 className="mt-2 font-bold">{tasks.description}</h3>
-              <Task />
+              <Task groupId={tasks.id} />
               <div className="flex">
                 <AddTaskIcon />
                 <span className="text-xs leading-5 ml-2">New Task</span>
