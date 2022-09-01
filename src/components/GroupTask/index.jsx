@@ -5,10 +5,12 @@ import AuthServices from "../../services/auth";
 import TaskServices from "../../services/task";
 import Task from "../Task";
 import ModalSave from "../ModalSave";
+import ModalDelete from "../ModalDelete";
 
 const GroupTask = () => {
   const [groupTask, setGroupTask] = useState();
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isDeleted, setIsDeleted] = useState(false);
 
   useEffect(() => {
     const token = AuthServices.getToken();
@@ -22,8 +24,11 @@ const GroupTask = () => {
     getGroupTask();
   }, []);
 
+  const [isShowMenu, setIsShowMenu] = useState(false);
   const [isShowModal, setIsShowModal] = useState(false);
+  const [isShowModalDelete, setIsShowModalDelete] = useState(false);
   const [groupId, setGroupId] = useState();
+  const [currentTaskId, setCurrentTaskId] = useState();
 
   return (
     <>
@@ -59,7 +64,17 @@ const GroupTask = () => {
                   {tasks.title}
                 </h2>
                 <h3 className="mt-2 font-bold">{tasks.description}</h3>
-                <Task groupId={tasks.id} isSubmitted={isSubmitted} />
+                <Task
+                  groupId={tasks.id}
+                  isSubmitted={isSubmitted}
+                  isDeleted={isDeleted}
+                  setIsShowModalDelete={setIsShowModalDelete}
+                  currentTaskId={currentTaskId}
+                  setCurrentTaskId={setCurrentTaskId}
+                  setGroupId={setGroupId}
+                  isShowMenu={isShowMenu}
+                  setIsShowMenu={setIsShowMenu}
+                />
                 <button
                   className="flex"
                   onClick={() => {
@@ -80,7 +95,15 @@ const GroupTask = () => {
         setIsShowModal={setIsShowModal}
         groupId={groupId}
         setIsSubmitted={setIsSubmitted}
-        isSubmitted={isSubmitted}
+      />
+
+      <ModalDelete
+        isShowModalDelete={isShowModalDelete}
+        setIsShowModalDelete={setIsShowModalDelete}
+        setIsDeleted={setIsDeleted}
+        groupId={groupId}
+        currentTaskId={currentTaskId}
+        setIsShowMenu={setIsShowMenu}
       />
     </>
   );

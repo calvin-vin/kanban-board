@@ -40,10 +40,23 @@ const createTask = async (token, groupId, formData) => {
   return res;
 };
 
+const deleteTask = async (token, groupId, taskId) => {
+  const res = await fetch(
+    `https://todos-project-api.herokuapp.com/todos/${groupId}/items/${taskId}`,
+    {
+      method: "DELETE",
+      headers: headers(token),
+    }
+  );
+
+  return res;
+};
+
 const TaskServices = {
   getGroupTasks,
   getTasks,
   createTask,
+  deleteTask,
 };
 
 export default TaskServices;

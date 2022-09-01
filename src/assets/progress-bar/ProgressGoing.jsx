@@ -1,8 +1,8 @@
 const ProgressGoing = ({ percentage }) => {
   return (
-    <div className="flex">
+    <div className="flex w-full">
       {/* Bar */}
-      <div className="bg-neutral-30 w-44 h-4 rounded-full mr-3">
+      <div className="bg-neutral-30 w-full max-w-[172px] h-4 rounded-full mr-3">
         <div
           className={`bg-primary-main rounded-full h-full`}
           style={{ width: `${parseInt(percentage).toString()}%` }}

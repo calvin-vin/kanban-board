@@ -9,11 +9,3 @@ body {
 .percent {
   font-family: "Inter", sans-serif;
 }
-
-.dropdown-menu {
-  @apply absolute top-8 left-[90%] bg-white rounded pt-3.5 pb-[2px] px-6 w-full max-w-[320px] shadow;
-}
-
-.dropdown-item:hover > * {
-  @apply text-primary-main fill-primary-main;
-}

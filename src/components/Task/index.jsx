@@ -8,13 +8,20 @@ import ProgressIncomplete from "../../assets/progress-bar/ProgressIncomplete";
 import ProgressComplete from "../../assets/progress-bar/ProgressComplete";
 import OptionIcon from "../../assets/OptionIcon";
 import SeparatorIcon from "../../assets/SeparatorIcon";
-import TrashIcon from "../../assets/sidebar/TrashIcon";
-import MoveLeftIcon from "../../assets/sidebar/MoveLeftIcon";
-import MoveRightIcon from "../../assets/sidebar/MoveRightIcon";
-import EditIcon from "../../assets/sidebar/EditIcon";
 import NoTask from "../NoTask/NoTask";
+import DropdownMenu from "../DropdownMenu";
 
-const Task = ({ groupId, isSubmitted }) => {
+const Task = ({
+  groupId,
+  isSubmitted,
+  isDeleted,
+  setIsShowModalDelete,
+  currentTaskId,
+  setCurrentTaskId,
+  setGroupId,
+  isShowMenu,
+  setIsShowMenu,
+}) => {
   const [tasks, setTasks] = useState();
 
   useEffect(() => {
@@ -27,7 +34,7 @@ const Task = ({ groupId, isSubmitted }) => {
     };
 
     getTasks();
-  }, [groupId, isSubmitted]);
+  }, [groupId, isSubmitted, isDeleted]);
   return (
     <div className="w-full">
       {tasks && !tasks.length && <NoTask />}
@@ -54,36 +61,21 @@ const Task = ({ groupId, isSubmitted }) => {
                   ) : (
                     <ProgressGoing percentage={task.progress_percentage} />
                   )}
-                  <OptionIcon />
-                  {/* Dropdown */}
-                  {/* <div className="dropdown-menu">
-            <ul>
-              <li className="flex items-center mb-3 group">
-                <MoveRightIcon />
-                <span className="text-sm leading-6 font-semibold ml-[28px] group-hover:text-primary-main">
-                  Move Right
-                </span>
-              </li>
-              <li className="flex items-center mb-3 group">
-                <MoveLeftIcon />
-                <span className="text-sm leading-6 font-semibold ml-[28px] group-hover:text-primary-main">
-                  Move Left
-                </span>
-              </li>
-              <li className="flex items-center mb-3 group">
-                <EditIcon />
-                <span className="text-sm leading-6 font-semibold ml-[22px] group-hover:text-primary-main">
-                  Edit
-                </span>
-              </li>
-              <li className="flex items-center mb-3 group">
-                <TrashIcon />
-                <span className="text-sm leading-6 font-semibold ml-[22px] group-hover:text-danger-main">
-                  Delete
-                </span>
-              </li>
-            </ul>
-          </div> */}
+                  <button
+                    onClick={() => {
+                      setIsShowMenu((isShowMenu) => !isShowMenu);
+                      setCurrentTaskId(task.id);
+                      setGroupId(task.todo_id);
+                    }}
+                  >
+                    <OptionIcon />
+                  </button>
+                  <DropdownMenu
+                    isShowMenu={isShowMenu}
+                    idTask={task.id}
+                    currentTaskId={currentTaskId}
+                    setIsShowModalDelete={setIsShowModalDelete}
+                  />
                 </div>
               </div>
             </div>
