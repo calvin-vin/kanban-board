@@ -7,7 +7,7 @@ const headers = (token) => {
 };
 
 const getGroupTasks = async (token) => {
-  const res = await fetch("https://todos-project-api.herokuapp.com/todos", {
+  const res = await fetch(`${process.env.REACT_APP_URL_API}/todos`, {
     method: "GET",
     headers: headers(token),
   });
@@ -17,7 +17,7 @@ const getGroupTasks = async (token) => {
 
 const getTasks = async (token, groupId) => {
   const res = await fetch(
-    `https://todos-project-api.herokuapp.com/todos/${groupId}/items`,
+    `${process.env.REACT_APP_URL_API}/todos/${groupId}/items`,
     {
       method: "GET",
       headers: headers(token),
@@ -29,7 +29,7 @@ const getTasks = async (token, groupId) => {
 
 const getTask = async (token, groupId, taskId) => {
   const res = await fetch(
-    `https://todos-project-api.herokuapp.com/todos/${groupId}/items/${taskId}`,
+    `${process.env.REACT_APP_URL_API}/todos/${groupId}/items/${taskId}`,
     {
       method: "GET",
       headers: headers(token),
@@ -41,7 +41,7 @@ const getTask = async (token, groupId, taskId) => {
 
 const createTask = async (token, groupId, formData) => {
   const res = await fetch(
-    `https://todos-project-api.herokuapp.com/todos/${groupId}/items`,
+    `${process.env.REACT_APP_URL_API}/todos/${groupId}/items`,
     {
       method: "POST",
       headers: headers(token),
@@ -54,7 +54,7 @@ const createTask = async (token, groupId, formData) => {
 
 const deleteTask = async (token, groupId, taskId) => {
   const res = await fetch(
-    `https://todos-project-api.herokuapp.com/todos/${groupId}/items/${taskId}`,
+    `${process.env.REACT_APP_URL_API}/todos/${groupId}/items/${taskId}`,
     {
       method: "DELETE",
       headers: headers(token),
@@ -66,7 +66,7 @@ const deleteTask = async (token, groupId, taskId) => {
 
 const moveTaskToLeft = async (token, groupId, taskId) => {
   const res = await fetch(
-    `https://todos-project-api.herokuapp.com/todos/${groupId}/items/${taskId}`,
+    `${process.env.REACT_APP_URL_API}/todos/${groupId}/items/${taskId}`,
     {
       method: "PATCH",
       headers: headers(token),
@@ -81,7 +81,7 @@ const moveTaskToLeft = async (token, groupId, taskId) => {
 
 const moveTaskToRight = async (token, groupId, taskId) => {
   const res = await fetch(
-    `https://todos-project-api.herokuapp.com/todos/${groupId}/items/${taskId}`,
+    `${process.env.REACT_APP_URL_API}/todos/${groupId}/items/${taskId}`,
     {
       method: "PATCH",
       headers: headers(token),
@@ -97,7 +97,7 @@ const moveTaskToRight = async (token, groupId, taskId) => {
 const updateTask = async (token, groupId, taskId, formData) => {
   const body = { ...formData, target_todo_id: groupId };
   const res = await fetch(
-    `https://todos-project-api.herokuapp.com/todos/${groupId}/items/${taskId}`,
+    `${process.env.REACT_APP_URL_API}/todos/${groupId}/items/${taskId}`,
     {
       method: "PATCH",
       headers: headers(token),

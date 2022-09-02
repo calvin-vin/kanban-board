@@ -1,20 +1,17 @@
 const login = async (data) => {
-  const res = await fetch(
-    "https://todos-project-api.herokuapp.com/auth/login",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    }
-  );
+  const res = await fetch(`${process.env.REACT_APP_URL_API}/auth/login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
 
   return res;
 };
 
 const register = async (data) => {
-  const res = await fetch("https://todos-project-api.herokuapp.com/signup", {
+  const res = await fetch(`${process.env.REACT_APP_URL_API}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
