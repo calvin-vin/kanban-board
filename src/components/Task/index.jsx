@@ -25,6 +25,7 @@ const Task = ({
   isLast,
   isUpdated,
   setIsUpdated,
+  setIsShowModal,
 }) => {
   const [tasks, setTasks] = useState();
 
@@ -88,6 +89,7 @@ const Task = ({
                     isLast={isLast}
                     isFirst={isFirst}
                     setIsUpdated={setIsUpdated}
+                    setIsShowModal={setIsShowModal}
                   />
                 </div>
               </div>

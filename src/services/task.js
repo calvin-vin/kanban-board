@@ -27,6 +27,18 @@ const getTasks = async (token, groupId) => {
   return res;
 };
 
+const getTask = async (token, groupId, taskId) => {
+  const res = await fetch(
+    `https://todos-project-api.herokuapp.com/todos/${groupId}/items/${taskId}`,
+    {
+      method: "GET",
+      headers: headers(token),
+    }
+  );
+
+  return res;
+};
+
 const createTask = async (token, groupId, formData) => {
   const res = await fetch(
     `https://todos-project-api.herokuapp.com/todos/${groupId}/items`,
@@ -82,13 +94,29 @@ const moveTaskToRight = async (token, groupId, taskId) => {
   return res;
 };
 
+const updateTask = async (token, groupId, taskId, formData) => {
+  const body = { ...formData, target_todo_id: groupId };
+  const res = await fetch(
+    `https://todos-project-api.herokuapp.com/todos/${groupId}/items/${taskId}`,
+    {
+      method: "PATCH",
+      headers: headers(token),
+      body: JSON.stringify(body),
+    }
+  );
+
+  return res;
+};
+
 const TaskServices = {
   getGroupTasks,
   getTasks,
+  getTask,
   createTask,
   deleteTask,
   moveTaskToLeft,
   moveTaskToRight,
+  updateTask,
 };
 
 export default TaskServices;

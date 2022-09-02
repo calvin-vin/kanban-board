@@ -79,11 +79,13 @@ const GroupTask = () => {
                   isLast={id === groupTask.length - 1}
                   isUpdated={isUpdated}
                   setIsUpdated={setIsUpdated}
+                  setIsShowModal={setIsShowModal}
                 />
                 <button
                   className="flex"
                   onClick={() => {
                     setGroupId(tasks.id);
+                    setCurrentTaskId(null);
                     setIsShowModal((isShowModal) => !isShowModal);
                   }}
                 >
@@ -99,7 +101,9 @@ const GroupTask = () => {
         isShowModal={isShowModal}
         setIsShowModal={setIsShowModal}
         groupId={groupId}
+        isSubmitted={isSubmitted}
         setIsSubmitted={setIsSubmitted}
+        currentTaskId={currentTaskId}
       />
 
       <ModalDelete

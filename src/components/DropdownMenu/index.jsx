@@ -18,6 +18,7 @@ const DropdownMenu = ({
   groupId,
   setIsShowMenu,
   setIsUpdated,
+  setIsShowModal,
 }) => {
   const [isLoading, setIsLoading] = useState(false);
 
@@ -85,7 +86,10 @@ const DropdownMenu = ({
             </button>
           </li>
           <li className="mb-3">
-            <button className="flex items-center group">
+            <button
+              className="flex items-center group"
+              onClick={() => setIsShowModal((isShowModal) => !isShowModal)}
+            >
               <EditIcon />
               <span className="text-sm leading-6 font-semibold ml-[22px] group-hover:text-primary-main">
                 Edit
