@@ -33,7 +33,7 @@ const GroupTask = () => {
 
   return (
     <>
-      <div className="flex items-start mb-32">
+      <div className="flex flex-col md:flex-row items-start mb-32 pt-20 px-10 md:px-0">
         {groupTask &&
           groupTask.map((tasks, id) => {
             let bg, border, text;
@@ -56,7 +56,7 @@ const GroupTask = () => {
             }
             return (
               <div
-                className={`mt-20 w-full sm:w-3/4 md:w-2/4 lg:w-1/4 mx-3 flex flex-col items-start ${bg} border ${border} p-4 pt-[18px] rounded`}
+                className={`w-full sm:3/4 md:w-2/4 lg:w-1/4 mb-3 md:mb-0 flex flex-col items-start ${bg} border ${border} p-4 pt-[18px] rounded md:mx-2`}
                 key={tasks.id}
               >
                 <h2
