@@ -1,3 +1,8 @@
+import { useState } from "react";
+
+import TaskServices from "../../services/task";
+import AuthServices from "../../services/auth";
+
 import TrashIcon from "../../assets/sidebar/TrashIcon";
 import MoveLeftIcon from "../../assets/sidebar/MoveLeftIcon";
 import MoveRightIcon from "../../assets/sidebar/MoveRightIcon";
@@ -8,7 +13,45 @@ const DropdownMenu = ({
   idTask,
   currentTaskId,
   setIsShowModalDelete,
+  isFirst,
+  isLast,
+  groupId,
+  setIsShowMenu,
+  setIsUpdated,
 }) => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleMoveToRight = async () => {
+    setIsLoading((isLoading) => !isLoading);
+    const token = AuthServices.getToken();
+    const response = await TaskServices.moveTaskToRight(
+      token,
+      groupId,
+      currentTaskId
+    );
+
+    if (response.ok) {
+      setIsUpdated((isUpdated) => !isUpdated);
+    }
+    setIsShowMenu((isShowMenu) => !isShowMenu);
+    setIsLoading((isLoading) => !isLoading);
+  };
+
+  const handleMoveToLeft = async () => {
+    setIsLoading((isLoading) => !isLoading);
+    const token = AuthServices.getToken();
+    const response = await TaskServices.moveTaskToLeft(
+      token,
+      groupId,
+      currentTaskId
+    );
+
+    if (response.ok) {
+      setIsUpdated((isUpdated) => !isUpdated);
+    }
+    setIsShowMenu((isShowMenu) => !isShowMenu);
+    setIsLoading((isLoading) => !isLoading);
+  };
   return (
     <>
       <div
@@ -18,17 +61,25 @@ const DropdownMenu = ({
       >
         <ul>
           <li className="mb-3">
-            <button className="flex items-center group">
+            <button
+              className="flex items-center group disabled:cursor-not-allowed"
+              disabled={isLast || isLoading}
+              onClick={handleMoveToRight}
+            >
               <MoveRightIcon />
-              <span className="text-sm leading-6 font-semibold ml-[28px] group-hover:text-primary-main">
+              <span className="text-sm leading-6 font-semibold ml-[28px] group-hover:text-primary-main group-disabled:text-neutral-70">
                 Move Right
               </span>
             </button>
           </li>
           <li className="mb-3">
-            <button className="flex items-center group">
+            <button
+              className="flex items-center group disabled:cursor-not-allowed"
+              disabled={isFirst || isLoading}
+              onClick={handleMoveToLeft}
+            >
               <MoveLeftIcon />
-              <span className="text-sm leading-6 font-semibold ml-[28px] group-hover:text-primary-main">
+              <span className="text-sm leading-6 font-semibold ml-[28px] group-hover:text-primary-main group-disabled:text-neutral-70">
                 Move Left
               </span>
             </button>

@@ -21,6 +21,10 @@ const Task = ({
   setGroupId,
   isShowMenu,
   setIsShowMenu,
+  isFirst,
+  isLast,
+  isUpdated,
+  setIsUpdated,
 }) => {
   const [tasks, setTasks] = useState();
 
@@ -38,13 +42,13 @@ const Task = ({
     };
 
     getTasks();
-  }, [groupId, isSubmitted, isDeleted]);
+  }, [groupId, isSubmitted, isDeleted, isUpdated]);
   return (
     <div className="w-full">
       {tasks && !tasks.length && <NoTask />}
       {tasks &&
         tasks.length > 0 &&
-        tasks.map((task) => {
+        tasks.map((task, id) => {
           return (
             <div
               className="mt-2 mb-3 bg-neutral-20 border border-neutral-40 rounded p-4 pb-5 w-full"
@@ -77,8 +81,13 @@ const Task = ({
                   <DropdownMenu
                     isShowMenu={isShowMenu}
                     idTask={task.id}
+                    groupId={groupId}
                     currentTaskId={currentTaskId}
                     setIsShowModalDelete={setIsShowModalDelete}
+                    setIsShowMenu={setIsShowMenu}
+                    isLast={isLast}
+                    isFirst={isFirst}
+                    setIsUpdated={setIsUpdated}
                   />
                 </div>
               </div>

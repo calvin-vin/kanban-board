@@ -15,7 +15,6 @@ const ModalDelete = ({
   currentTaskId,
   setIsShowMenu,
 }) => {
-  console.log(groupId, currentTaskId);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
 

@@ -52,11 +52,43 @@ const deleteTask = async (token, groupId, taskId) => {
   return res;
 };
 
+const moveTaskToLeft = async (token, groupId, taskId) => {
+  const res = await fetch(
+    `https://todos-project-api.herokuapp.com/todos/${groupId}/items/${taskId}`,
+    {
+      method: "PATCH",
+      headers: headers(token),
+      body: JSON.stringify({
+        target_todo_id: groupId - 1,
+      }),
+    }
+  );
+
+  return res;
+};
+
+const moveTaskToRight = async (token, groupId, taskId) => {
+  const res = await fetch(
+    `https://todos-project-api.herokuapp.com/todos/${groupId}/items/${taskId}`,
+    {
+      method: "PATCH",
+      headers: headers(token),
+      body: JSON.stringify({
+        target_todo_id: groupId + 1,
+      }),
+    }
+  );
+
+  return res;
+};
+
 const TaskServices = {
   getGroupTasks,
   getTasks,
   createTask,
   deleteTask,
+  moveTaskToLeft,
+  moveTaskToRight,
 };
 
 export default TaskServices;

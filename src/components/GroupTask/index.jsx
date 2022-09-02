@@ -11,6 +11,7 @@ const GroupTask = () => {
   const [groupTask, setGroupTask] = useState();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isDeleted, setIsDeleted] = useState(false);
+  const [isUpdated, setIsUpdated] = useState(false);
 
   useEffect(() => {
     const token = AuthServices.getToken();
@@ -74,6 +75,10 @@ const GroupTask = () => {
                   setGroupId={setGroupId}
                   isShowMenu={isShowMenu}
                   setIsShowMenu={setIsShowMenu}
+                  isFirst={id === 0}
+                  isLast={id === groupTask.length - 1}
+                  isUpdated={isUpdated}
+                  setIsUpdated={setIsUpdated}
                 />
                 <button
                   className="flex"
