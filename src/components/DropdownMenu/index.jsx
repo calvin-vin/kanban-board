@@ -61,30 +61,34 @@ const DropdownMenu = ({
         }`}
       >
         <ul>
-          <li className="mb-3">
-            <button
-              className="flex items-center group disabled:cursor-not-allowed"
-              disabled={isLast || isLoading}
-              onClick={handleMoveToRight}
-            >
-              <MoveRightIcon />
-              <span className="text-sm leading-6 font-semibold ml-[28px] group-hover:text-primary-main group-disabled:text-neutral-70">
-                Move Right
-              </span>
-            </button>
-          </li>
-          <li className="mb-3">
-            <button
-              className="flex items-center group disabled:cursor-not-allowed"
-              disabled={isFirst || isLoading}
-              onClick={handleMoveToLeft}
-            >
-              <MoveLeftIcon />
-              <span className="text-sm leading-6 font-semibold ml-[28px] group-hover:text-primary-main group-disabled:text-neutral-70">
-                Move Left
-              </span>
-            </button>
-          </li>
+          {!isLast && (
+            <li className="mb-3">
+              <button
+                className="flex items-center group disabled:cursor-not-allowed"
+                disabled={isLoading}
+                onClick={handleMoveToRight}
+              >
+                <MoveRightIcon />
+                <span className="text-sm leading-6 font-semibold ml-[28px] group-hover:text-primary-main group-disabled:text-neutral-70">
+                  Move Right
+                </span>
+              </button>
+            </li>
+          )}
+          {!isFirst && (
+            <li className="mb-3">
+              <button
+                className="flex items-center group disabled:cursor-not-allowed"
+                disabled={isLoading}
+                onClick={handleMoveToLeft}
+              >
+                <MoveLeftIcon />
+                <span className="text-sm leading-6 font-semibold ml-[28px] group-hover:text-primary-main group-disabled:text-neutral-70">
+                  Move Left
+                </span>
+              </button>
+            </li>
+          )}
           <li className="mb-3">
             <button
               className="flex items-center group"
