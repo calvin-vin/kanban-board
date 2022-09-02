@@ -11,10 +11,10 @@ const Board = () => {
   useUnauth(token);
 
   return (
-    <div>
+    <>
       <Header />
       <GroupTask />
-    </div>
+    </>
   );
 };
 

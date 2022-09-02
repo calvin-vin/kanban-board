@@ -55,6 +55,7 @@ const Login = ({ setToken }) => {
             <p className="text-danger-border text-center mb-4">{error}</p>
           )}
           <div className="mb-4">
+            {/* Input Email */}
             <input
               type="text"
               className="rounded outline-none py-1 px-2 bg-transparent border-primary-main border-b-2 placeholder:text-white placeholder:opacity-60 text-white w-full"
@@ -64,6 +65,7 @@ const Login = ({ setToken }) => {
               }
             />
           </div>
+          {/* Input Password */}
           <div className="mb-4">
             <input
               type="password"
@@ -77,6 +79,7 @@ const Login = ({ setToken }) => {
           {isLoading ? (
             <Loader />
           ) : (
+            // Button Login
             <button
               type="submit"
               className="bg-primary-main text-sm text-white w-full rounded mt-4 py-1 font-bold hover:opacity-90"

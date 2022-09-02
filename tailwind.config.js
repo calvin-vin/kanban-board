@@ -29,6 +29,6 @@ module.exports = {
   },
   plugins: [],
   variants: {
-    fill: ["hover", "focus"], // this line does the trick
+    fill: ["hover", "focus"],
   },
 };

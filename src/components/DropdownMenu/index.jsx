@@ -10,13 +10,13 @@ import EditIcon from "../../assets/sidebar/EditIcon";
 
 const DropdownMenu = ({
   isShowMenu,
+  setIsShowMenu,
   idTask,
   currentTaskId,
-  setIsShowModalDelete,
   isFirst,
   isLast,
+  setIsShowModalDelete,
   groupId,
-  setIsShowMenu,
   setIsUpdated,
   setIsShowModal,
 }) => {

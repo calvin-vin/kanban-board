@@ -59,6 +59,7 @@ const Register = ({ setToken }) => {
             <p className="text-danger-border text-center mb-4">{error}</p>
           )}
           <div className="mb-4">
+            {/* Input Name */}
             <input
               type="text"
               className="rounded outline-none py-1 px-2 bg-transparent border-primary-main border-b-2 placeholder:text-white placeholder:opacity-60 text-white w-full"
@@ -69,6 +70,7 @@ const Register = ({ setToken }) => {
             />
           </div>
           <div className="mb-4">
+            {/* Input Email */}
             <input
               type="text"
               className="rounded outline-none py-1 px-2 bg-transparent border-primary-main border-b-2 placeholder:text-white placeholder:opacity-60 text-white w-full"
@@ -79,6 +81,7 @@ const Register = ({ setToken }) => {
             />
           </div>
           <div className="mb-4">
+            {/* Input Password */}
             <input
               type="password"
               className="rounded outline-none py-1 px-2 bg-transparent border-primary-main border-b-2 placeholder:text-white placeholder:opacity-60 text-white w-full"
@@ -89,6 +92,7 @@ const Register = ({ setToken }) => {
             />
           </div>
           <div className="mb-4">
+            {/* Input Password Confirmation */}
             <input
               type="password"
               className="rounded outline-none py-1 px-2 bg-transparent border-primary-main border-b-2 placeholder:text-white placeholder:opacity-60 text-white w-full"
@@ -104,6 +108,7 @@ const Register = ({ setToken }) => {
           {isLoading ? (
             <Loader />
           ) : (
+            // Button Register
             <button
               type="submit"
               className="bg-primary-main text-sm text-white w-full rounded mt-4 py-1 font-bold hover:opacity-90"
