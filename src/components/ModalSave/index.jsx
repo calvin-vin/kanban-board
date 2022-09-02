@@ -16,7 +16,7 @@ const ModalSave = ({
 }) => {
   const formDataDefault = {
     name: "",
-    progress_percentage: 0,
+    progress_percentage: "",
   };
 
   const [formData, setFormData] = useState(formDataDefault);
@@ -41,13 +41,13 @@ const ModalSave = ({
         const { name, progress_percentage } = res;
         setFormData({
           name,
-          progress_percentage: progress_percentage,
+          progress_percentage: progress_percentage || "",
         });
       });
     } else {
       setFormData({
         name: "",
-        progress_percentage: 0,
+        progress_percentage: "",
       });
     }
   }, [currentTaskId, groupId, isSubmitted]);
@@ -110,7 +110,7 @@ const ModalSave = ({
         {error && (
           <p className="text-danger-main text-xs mt-4 text-center">{error}</p>
         )}
-        <form onSubmit={handleSubmit}>
+        <div>
           {/* Modal Body */}
           <div className="flex flex-col mt-6">
             {/* Input Group */}
@@ -141,7 +141,7 @@ const ModalSave = ({
                 Progress
               </label>
               <input
-                type="number"
+                type="text"
                 id="progress"
                 className="border-2 border-neutral-30 rounded-lg text-xs leading-5 text-neutral-90 px-4 py-2 w-1/3"
                 placeholder="70%"
@@ -149,7 +149,7 @@ const ModalSave = ({
                 onChange={(e) =>
                   setFormData({
                     ...formData,
-                    progress_percentage: parseInt(e.target.value),
+                    progress_percentage: parseInt(e.target.value) || "",
                   })
                 }
               />
@@ -167,13 +167,16 @@ const ModalSave = ({
                 >
                   Cancel
                 </button>
-                <button className="px-4 py-1 shadow rounded-lg text-sm leading-6 font-bold text-neutral-10 bg-primary-main mr-2.5">
+                <button
+                  className="px-4 py-1 shadow rounded-lg text-sm leading-6 font-bold text-neutral-10 bg-primary-main mr-2.5"
+                  onClick={handleSubmit}
+                >
                   Save Task
                 </button>
               </>
             )}
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );

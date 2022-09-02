@@ -63,7 +63,7 @@ const Task = ({
                   <SeparatorIcon />
                 </div>
                 <div className="flex justify-between items-center mt-3 w-full relative">
-                  {!task.progress_percentage ? (
+                  {task.progress_percentage === null ? (
                     <ProgressIncomplete />
                   ) : task.progress_percentage >= 100 ? (
                     <ProgressComplete />
