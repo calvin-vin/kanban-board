@@ -104,6 +104,7 @@ const GroupTask = () => {
         isSubmitted={isSubmitted}
         setIsSubmitted={setIsSubmitted}
         currentTaskId={currentTaskId}
+        setIsShowMenu={setIsShowMenu}
       />
 
       <ModalDelete

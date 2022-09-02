@@ -13,6 +13,7 @@ const ModalSave = ({
   setIsSubmitted,
   currentTaskId,
   isSubmitted,
+  setIsShowMenu,
 }) => {
   const formDataDefault = {
     name: "",
@@ -80,6 +81,7 @@ const ModalSave = ({
     }
 
     setIsLoading((isLoading) => !isLoading);
+    setIsShowMenu((isShowMenu) => !isShowMenu);
   };
 
   return (
